@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bnb</title>
-    <%= csrf_meta_tags %>
+
+<head>
+  <title>Bnb</title>
+  <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
+<body>
+  <%= render 'shared/navbar' %>
+  <div id="main_content" class="container">
     <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-    <% end %>
-    
-    <% if user_signed_in? %>
-      <ul>
-        <li> <%= link_to  "Make Posting", new_posting_path %> </li>
-        <li> <%= link_to  "Account", edit_user_registration_path %></li>
-        <li> <%= link_to  "Sign Out", destroy_user_session_path, :method => :delete  %></li>
-      </ul>
+      <%= content_tag(:div, msg, class: "alert alert-info") %>
+        <% end %>
 
-    <% else %>
-      <ul>
-        <li> <%= link_to  "Sign Up", new_user_registration_path %> </li>
-        <li> <%= link_to  "Sign In", new_user_session_path %></li>
-      </ul>
-    <% end %>
+          <div id="content" class="col-md-9 center-block">
+            <%= yield %>
+          </div>
+  </div>
+  </div>
+</body>
 
-    <%= yield %>
-  </body>
 </html>

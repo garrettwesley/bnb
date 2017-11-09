@@ -1,19 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @posting.title %>
+      <%= @posting.description %>
+    <br>
+      <small>Submitted by <%= @posting.user.email %></small>
+  </h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @posting.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @posting.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @posting.price %>
-</p>
-
-<%= link_to 'Edit', edit_posting_path(@posting) %> |
-<%= link_to 'Back', postings_path %>
+<% if @posting.user == current_user -%>
+  <div class="btn-group">
+    <%= link_to 'Edit', edit_posting_path(@posting), class: "btn btn-default" %>
+    <%= link_to 'Destroy', @posting, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+  </div>
+<% end %>

@@ -1,5 +1,6 @@
 class PostingsController < ApplicationController
   before_action :set_posting, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /postings
   # GET /postings.json
@@ -25,6 +26,7 @@ class PostingsController < ApplicationController
   # POST /postings.json
   def create
     @posting = Posting.new(posting_params)
+    @posting.user_id = current_user.id
 
     respond_to do |format|
       if @posting.save
