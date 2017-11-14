@@ -1,11 +1,7 @@
-<div class="input-group stylish-input-group">
-  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
-  <input type="text" class="form-control"  placeholder="Berkeley" >
-</div>
 <% @postings.each do |posting| %>
   <div class="link row clearfix">
     <h2>
-      <%= link_to posting.title, posting %><br>
+      <%= link_to posting.destination, posting %><br>
       <small class="author">Submitted <%= time_ago_in_words(posting.created_at) %> by <%= posting.user.email %></small>
     </h2>
   </div>

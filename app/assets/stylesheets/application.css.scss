@@ -26,6 +26,12 @@
 	}
 }
 
+.form-control {
+	border-radius: 2px;
+}
+.form-group {
+	width: 40%;
+}
 #main_content {
 	#content {
 		float: none;
@@ -54,16 +60,15 @@
 		}
 	}
 }
-
-.stylish-input-group .input-group-addon{
-    background: white !important; 
+#container{
+	display: flex;
+	justify-content: center;
+	align-content: vertical;
 }
-.stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:4px 6px 17px -11px rgba(0,0,0,0.75); 
-	border-color:#ccc;
+#map{
+	flex: 1;
 }
-.stylish-input-group button{
-    border:0;
-    background:transparent;
+#former{
+	flex:1;
+	padding: 0px;
 }

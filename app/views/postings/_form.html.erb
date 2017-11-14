@@ -1,23 +1,33 @@
-<!-- <%= form_with(model: posting, local: true) do |f| %>
-  <% if posting.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(posting.errors.count, "error") %> prohibited this posting from being saved:</h2>
+<div id="container">
+  <div id="former"> 
+    <%= form_with(model: posting, local: true) do |f| %>
+      <% if posting.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(posting.errors.count, "error") %> prohibited this posting from being saved:</h2>
 
-      <ul>
-      <% posting.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+          <% posting.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+    <% end %>
 
-  <div class="form-group">
-      <%= f.label :title %><br>
-      <%= f.text_field :title, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :destination %><br>
+      <%= f.text_field :destination, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :description %><br>
-      <%= f.text_field :description, class: "form-control" %>
+      <%= f.label :depart_from %><br>
+      <%= f.text_field :depart_location, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :depart_date %><br>
+      <%= f.date_field :date_leaving, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :comments %><br>
+      <%= f.text_area :description, class: "form-control" %>
     </div>
     <div class="form-group">
         <%= f.label :price %><br>
@@ -27,132 +37,26 @@
     <div class="form-group">
       <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
     </div>
-<% end %> -->
-<div class="panel panel-default">
-    <div class="panel-heading">
-      Create Your Beautiful Place
-    </div>
-    <div class="panel-body">
-      <div class="container">
-        <%= form_for @posting, html: {multipart: true} do |f| %>
-          <div class="row">
-  
-            <div class="col-md-4 select">
-              <div class="form-group">
-                <label>Home Type</label>
-                <%= f.select :title, [['Apartment', 'Apartment'], ['House', 'House'], ['Bed & Breakfast',
-                  'Bed & Breakfast']], id: 'home_type', prompt: 'Select...', class: 'form-control' %>
-              </div>
-            </div>
-  
-            <div class="col-md-4 select">
-              <div class="form-group">
-                <label>Room Type</label>
-                <%= f.select :title, [['Entire', 'Entire'], ['Private', 'Private'], ['Shared',
-                  'Shared']], id: 'room_type', prompt: 'Select...', class: 'form-control' %>
-              </div>
-            </div>
-  
-            <div class="col-md-4 select">
-              <div class="form-group">
-                <label>Accomodate</label>
-                <%= f.select :title, [['1', 1], ['2', 2], ['3',3]], id: 'accomodate',
-                prompt: 'Select...', class: 'form-control' %>
-              </div>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="col-md-4 select">
-              <div class="form-group">
-                <label>Bed Rooms</label>
-                <%= f.select :title, [['1', 1], ['2', 2], ['3', 3], ['4+', 4]], id: 'bed_room', prompt: 'Select...',
-                class: 'form-control' %>
-              </div>
-            </div>
-  
-            <div class="col-md-4 select">
-              <div class="form-group">
-                <label>Bath Rooms</label>
-                <%= f.select :title, [['1', 1], ['2', 2], ['3', 3], ['4+', 4]], id: 'bath_room', prompt: 'Select...',
-                class: 'form-control' %>
-              </div>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="form-group">
-              <label>Listing Name</label>
-              <%= f.text_field :title, placeholder: 'Be clear and descriptive', class: 'form-control' %>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="form-group">
-              <label>Summary</label>
-              <%= f.text_area :title, rows: 5, placeholder: 'Tell the details about your place', class: 'form-control' %>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="form-group">
-              <label>Address</label>
-              <%= f.text_field :title, placeholder: 'Where is the location of your place', class: 'form-control' %>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <%= f.check_box :title %> TV
-              </div>
-              <div class="form-group">
-                <%= f.check_box :title %> Kitchen
-              </div>
-              <div class="form-group">
-                <%= f.check_box :title %> Internet
-              </div>
-            </div>
-  
-            <div class="col-md-4">
-              <div class="form-group">
-                <%= f.check_box :title %> Air Conditioning
-              </div>
-              <div class="form-group">
-                <%= f.check_box :title %> Heating
-              </div>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <label>Rate per Night</label>
-                <div class="input-group">
-                  <div class="input-group-addon">$</div>
-                  <%= f.text_field :price, placeholder: 'eg. $100', class: 'form-control' %>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <span class="btn btn-default btn-file">
-                  <%= file_field_tag "images[]", type: :file, multiple: true %>
-                </span>
-              </div>
-            </div>
-          </div>
-  
-          
-  
-          <div class="actions">
-            <%= f.submit "Save", class: 'btn btn-primary' %>
-          </div>
-  
-        <% end %>
-      </div>
-    </div>
   </div>
+  <div id="map" style='width: 400px; height: 800px;'></div>
+</div>
+
+  <script src="//maps.google.com/maps/api/js?key=AIzaSyD550c1hBVyJPPIrt81EKMnHbytZ_xnjus"></script>
+  <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+  
+  <script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers([
+        {
+          "lat": 37.8662205,
+          "lng": -122.2570303,
+          
+          "infowindow": "Departure"
+        }
+      ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+  </script>
+<% end %>
