@@ -71,6 +71,6 @@ class PostingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def posting_params
-      params.require(:posting).permit(:destination, :departure_date, :departure_location, :description, :price)
+      params.require(:posting).permit(:start, :leaving, :end, :comment, :price)
     end
 end

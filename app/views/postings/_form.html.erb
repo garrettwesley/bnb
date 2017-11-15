@@ -1,5 +1,5 @@
 <div id="container">
-  <div id="former"> 
+  <div id="former">
     <%= form_with(model: posting, local: true) do |f| %>
       <% if posting.errors.any? %>
         <div id="error_explanation">
@@ -14,20 +14,20 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :destination %><br>
-      <%= f.text_field :destination, class: "form-control" %>
+      <%= f.label :start %><br>
+      <%= f.text_field :start, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :depart_from %><br>
-      <%= f.text_field :depart_location, class: "form-control" %>
+      <%= f.label :end %><br>
+      <%= f.text_field :end, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :depart_date %><br>
-      <%= f.date_field :date_leaving, class: "form-control" %>
+      <%= f.label :leaving %><br>
+      <%= f.date_field :leaving, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :comments %><br>
-      <%= f.text_area :description, class: "form-control" %>
+      <%= f.label :comment %><br>
+      <%= f.text_area :comment, class: "form-control" %>
     </div>
     <div class="form-group">
         <%= f.label :price %><br>
@@ -43,7 +43,7 @@
 
   <script src="//maps.google.com/maps/api/js?key=AIzaSyD550c1hBVyJPPIrt81EKMnHbytZ_xnjus"></script>
   <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
-  
+
   <script>
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
@@ -51,7 +51,7 @@
         {
           "lat": 37.8662205,
           "lng": -122.2570303,
-          
+
           "infowindow": "Departure"
         }
       ]);

@@ -2,24 +2,22 @@
 <html>
 
 <head>
-  <title>Bnb</title>
+  <title>Cal Rides</title>
   <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
   <%= render 'shared/navbar' %>
   <div id="main_content" class="container">
     <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class: "alert alert-info") %>
-        <% end %>
+      <%= content_tag(:div, msg, class: "alert alert-info alert-dismissable") %>
+    <% end %>
 
-          <div id="content" class="col-md-9 center-block">
-            <%= yield %>
-          </div>
-  </div>
+    <div id="content">
+      <%= yield %>
+    </div>
   </div>
 </body>
 

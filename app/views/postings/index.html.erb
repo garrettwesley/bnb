@@ -1,8 +1,14 @@
-<% @postings.each do |posting| %>
-  <div class="link row clearfix">
-    <h2>
-      <%= link_to posting.destination, posting %><br>
-      <small class="author">Submitted <%= time_ago_in_words(posting.created_at) %> by <%= posting.user.email %></small>
-    </h2>
+<% @postings.each_slice(3) do |ps| %>
+  <div class="row">
+    <% ps.each do |posting| %>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title"><%= link_to posting.end, posting %></h4>
+          <h6 class="mb-2 text-muted">From <%= posting.start %></h6>
+          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+          <small class="author">Submitted <%= time_ago_in_words(posting.created_at) %> by <%= posting.user.email %></small>
+        </div>
+      </div>
+    <% end %>
   </div>
 <% end %>
