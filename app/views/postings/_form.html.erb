@@ -11,18 +11,29 @@
           </ul>
         </div>
     <% end %>
-
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :address %><br>
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
     <div class="form-group">
       <%= f.label :start %><br>
-      <%= f.text_field :start, class: "form-control" %>
+      <%= f.date_field :start, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :end %><br>
-      <%= f.text_field :end, class: "form-control" %>
+      <%= f.date_field :end, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :leaving %><br>
-      <%= f.date_field :leaving, class: "form-control" %>
+      <%= f.label '# of beds' %><br>
+      <%= f.range_field :num_beds, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label '# of baths' %><br>
+      <%= f.range_field :num_baths, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :comment %><br>
@@ -51,11 +62,12 @@
           "lat": 37.8662205,
           "lng": -122.2570303,
 
-          "infowindow": "Departure"
+          "infowindow": "address"
         }
       ]);
+      handler.getMap().setZoom(6);
       handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
+      // handler.fitMapToBounds();
     });
   </script>
 <% end %>
