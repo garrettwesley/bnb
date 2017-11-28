@@ -1,69 +1,59 @@
-<div id="container">
-  <div id="former">
-    <%= form_with(model: posting, local: true) do |f| %>
-      <% if posting.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(posting.errors.count, "error") %> prohibited this posting from being saved:</h2>
-          <ul>
-          <% posting.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-    <% end %>
+<div class="row-fluid">
+  <h1>New Posting</h1>
+  <%= form_with(model: posting, local: true) do |f| %>
+    <% if posting.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(posting.errors.count, "error") %> prohibited this posting from being saved:</h2>
+        <ul>
+        <% posting.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+  <% end %>
+  
+  <div class="col-md-6">
     <div class="form-group">
       <%= f.label :title %><br>
       <%= f.text_field :title, class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :address %><br>
-      <%= f.text_field :address, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :start %><br>
       <%= f.date_field :start, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :end %><br>
-      <%= f.date_field :end, class: "form-control" %>
-    </div>
-    <div class="form-group">
       <%= f.label '# of beds' %><br>
       <%= f.range_field :num_beds, :in => 0..20, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :comment %><br>
+      <%= f.text_area :comment, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="form-group">
+      <%= f.label :address %><br>
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :end %><br>
+      <%= f.date_field :end, class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label '# of baths' %><br>
       <%= f.range_field :num_baths, :in => 0..20, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :comment %><br>
-      <%= f.text_area :comment, class: "form-control" %>
-    </div>
-    <div class="form-group">
         <%= f.label :price %><br>
         <%= f.number_field :price, class: "form-control" %>
       </div>
-    <br>
-    <div class="form-group">
-      <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
-    </div>
   </div>
-  <div id="map" style='width: 400px; height: 800px;'></div>
-</div>
-<script>
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers([
-      {
-        "lat": 37.8662205,
-        "lng": -122.2570303,
 
-        "infowindow": "address"
-      }
-    ]);
-    handler.getMap().setZoom(6);
-    handler.bounds.extendWith(markers);
-    // handler.fitMapToBounds();
-  });
-</script>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-lg btn-primary" %>
+  </div>
+
+</div>
+
 <% end %>

@@ -13,12 +13,12 @@
 
 <body>
   <%= render 'shared/navbar' %>
-  <div>
+  <div id="main_content">
     <% flash.each do |name, msg| %>
       <%= content_tag(:div, msg, class: "alert alert-info alert-dismissable") %>
     <% end %>
 
-    <div id="content">
+    <div id="content" class="center-block">
       <%= yield %>
     </div>
   </div>

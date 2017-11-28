@@ -26,6 +26,9 @@
  a:hover{
    text-decoration: none;
  }
+ a{
+   color: #fd5c63;
+ }
  #logo {
 	font-size: 26px;
 	font-weight: 700;
@@ -42,21 +45,9 @@
 .form-group {
 	width: 40%;
 }
-// .navbar-default .navbar-nav > li > a{
-//   color: #fd5c63;
-// }
-
-#container{
-	display: flex;
-	justify-content: center;
-	align-content: vertical;
-}
-#map{
-	flex: 1;
-}
-#former{
-	flex:1;
-	padding: 0px;
+.main-content{
+    margin-left: 300px;
+    margin-right: 300px;
 }
 .card {
   padding: 12px;
@@ -67,4 +58,7 @@
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
+}
+.card-title{
+  color: #fd5c63;
 }
