@@ -5,16 +5,16 @@ class PostingsController < ApplicationController
   # GET /postings
   # GET /postings.json
   def index
-    @hash = Gmaps4rails.build_markers(@postings) do |posting, marker|
-      marker.lat posting.latitude
-      marker.lng posting.longitude
-      marker.infowindow render_to_string(partial: "/postings/map_box", locals: { posting: posting })
-    end
-
     if params[:search]
       @postings = Posting.where('address LIKE ?', "%#{params[:search]}%")
     else
       @postings = Posting.all
+    end
+    
+    @hash = Gmaps4rails.build_markers(@postings) do |posting, marker|
+      marker.lat posting.latitude
+      marker.lng posting.longitude
+      marker.infowindow render_to_string(partial: "/postings/map_box", locals: { posting: posting })
     end
   end
 
