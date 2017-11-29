@@ -5,11 +5,16 @@ class PostingsController < ApplicationController
   # GET /postings
   # GET /postings.json
   def index
-    @postings = Posting.all
     @hash = Gmaps4rails.build_markers(@postings) do |posting, marker|
       marker.lat posting.latitude
       marker.lng posting.longitude
       marker.infowindow render_to_string(partial: "/postings/map_box", locals: { posting: posting })
+    end
+
+    if params[:search]
+      @postings = Posting.where('address LIKE ?', "%#{params[:search]}%")
+    else
+      @postings = Posting.all
     end
   end
 
@@ -76,6 +81,6 @@ class PostingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def posting_params
-      params.require(:posting).permit(:title, :start, :address, :num_beds, :num_baths, :end, :comment, :price)
+      params.require(:posting).permit(:title, :search, :start, :address, :num_beds, :num_baths, :end, :comment, :price)
     end
 end
