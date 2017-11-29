@@ -16,7 +16,7 @@
               <h6 class="mb-2 text-muted"><%= posting.address %></h6>
               <p class="card-text">$<%= posting.price %></p>
               <p class="card-text">Beds:<%= posting.num_beds %></p>
-              <small class="author">Submitted <%= time_ago_in_words(posting.created_at) %>  ago by <%= posting.user.username %></small>
+              <small class="author"><%= time_ago_in_words(posting.created_at).capitalize %>  ago by <%= posting.user.username %></small>
             </div>
           </div>
         <% end %>
