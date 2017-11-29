@@ -1,7 +1,6 @@
 <div class="main-content">
   <div class=''>
    <h3>Mailbox</h3>
-   <div class=''>
      <% @conversations.each do |conversation| %>
       <div class='card' style="height:50px;">
        <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
@@ -19,6 +18,5 @@
       </div>
        <% end %>
       <% end %>
-   </div>
   </div>
 </div>
