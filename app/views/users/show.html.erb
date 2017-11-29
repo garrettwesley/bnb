@@ -5,10 +5,18 @@
       <% ps.each do |posting| %>
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title"><%= link_to posting.end, posting %></h4>
-            <h6 class="mb-2 text-muted">From <%= posting.start %></h6>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-            <small class="author">Submitted <%= time_ago_in_words(posting.created_at) %> by <%= posting.user.username %></small>
+            <h4 class="card-title"><%= link_to posting.title, posting %></h4>
+            <h6 class="mb-2 text-muted"><%= posting.address %></h6>
+            <div class="col-md-5" style="padding:0px;">
+              <p class="card-text">$<%= posting.price %></p>
+              <p class="card-text">Beds:<%= posting.num_beds %></p>
+            </div>
+            <div class="col-md-5" style="padding:0px;">
+              <p class="card-text">From<%= posting.start %> to <%= posting.start %></p>
+              <p class="card-text">Baths:<%= posting.num_baths %></p>
+            </div>
+            <p class="col-md-12 card-text"><%= posting.comment %></p>
+            <small class="author col-md-12" style="padding:0px;">Submitted <%= time_ago_in_words(posting.created_at) %>  ago%></small>
           </div>
         </div>
       <% end %>
