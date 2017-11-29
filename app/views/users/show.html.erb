@@ -15,8 +15,8 @@
               <p class="card-text">From<%= posting.start %> to <%= posting.start %></p>
               <p class="card-text">Baths:<%= posting.num_baths %></p>
             </div>
-            <p class="col-md-12 card-text"><%= posting.comment %></p>
-            <small class="author col-md-12" style="padding:0px;">Submitted <%= time_ago_in_words(posting.created_at) %>  ago%></small>
+            <p class="col-md-12 card-text" style="padding:0px;"><%= posting.comment %></p>
+            <small class="author col-md-12" style="padding:0px;">Submitted <%= time_ago_in_words(posting.created_at) %>  ago</small>
           </div>
         </div>
       <% end %>
